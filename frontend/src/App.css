@@ -1,0 +1,187 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #1e1e2f 0%, #2a2a40 100%);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.upload-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  padding: 40px !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+  color: white !important;
+  max-width: 600px !important;
+  width: 100%;
+}
+
+.upload-card .header {
+  color: #fff !important;
+  font-size: 2rem !important;
+  margin-bottom: 30px !important;
+  text-align: center;
+}
+
+.file-input-wrapper {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.custom-file-input {
+  display: none;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.file-label:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.file-name {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #a0a0b0;
+}
+
+.analyze-btn {
+  background: linear-gradient(90deg, #f09c00 0%, #ff6b00 100%) !important;
+  color: white !important;
+  border-radius: 30px !important;
+  padding: 15px 30px !important;
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+  transition: transform 0.3s ease !important;
+}
+
+.analyze-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(240, 156, 0, 0.4);
+}
+
+.result-container {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #e0e0e0 !important;
+  border-radius: 12px !important;
+  padding: 30px !important;
+  margin-top: 30px !important;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.2) !important;
+}
+
+.dropzone-area {
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  margin: 20px 0;
+}
+
+.dropzone-area:hover, .dropzone-area.drag-active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #f09c00;
+}
+
+.dropzone-area h3 {
+  color: white;
+  margin-top: 15px;
+}
+
+.dropzone-area p {
+  color: #a0a0b0;
+}
+
+.file-name-pill {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.5);
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.result-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  backdrop-filter: blur(5px);
+}
+
+.result-card .content {
+  flex-grow: 1;
+}
+
+.result-card .header {
+  color: #fff !important;
+  margin-bottom: 15px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding-bottom: 15px !important;
+  font-size: 1.3rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.result-card .description {
+  color: #e0e0e0 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6 !important;
+}
+
+.labels-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.ui.label {
+  padding: 8px 12px !important;
+  font-size: 0.95rem !important;
+  border-radius: 8px !important;
+}
+
+@media (max-width: 768px) {
+  .upload-card {
+    padding: 20px !important;
+  }
+  
+  .result-container {
+    padding: 20px 15px !important;
+  }
+  
+  .ui.grid>.row>.column {
+    margin-bottom: 20px;
+  }
+}
