@@ -1,91 +1,45 @@
-.footer_content {
-    text-align: center;
-    color: rgb(240, 156, 0);
-    /* background-color: rgba(255, 166, 0, 0.91); */
-}
-
 .footer_main {
-    padding: 50px;
-    animation: slideUp 1s ease-out;
+    padding: 36px 20px;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+    text-align: center;
+    transition: var(--transition);
 }
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 .footer_Icons {
-    text-align: center;
-    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
 }
 
-.footer_Icons span {
-    margin: 0 5px;
+.footer_Icons a {
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-subtle);
+    transition: all 0.2s ease;
 }
 
-.footer_Icons .footer_git a {
-    color: rgb(240, 240, 240);
-    /* Brighter for dark mode */
-    transform: scale(1);
-    transition: 0.5s;
+.footer_Icons a:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    background-color: var(--accent-primary-subtle);
+    transform: translateY(-2px);
 }
 
-.footer_Icons .footer_link a {
-    color: rgb(255, 255, 255);
-    transform: scale(1);
-    transition: 0.5s;
+.footer_content {
+    font-size: 0.88rem;
+    color: var(--text-muted);
 }
 
-.footer_Icons .footer_insta a {
-    color: rgb(255, 192, 203);
-    /* Lighter pink */
-    transform: scale(1);
-    transition: 0.5s;
-}
-
-.footer_Icons .footer_wht a {
-    color: rgb(144, 238, 144);
-    /* Light green */
-    transform: scale(1);
-    transition: 0.5s;
-}
-
-.footer_Icons .footer_twi a {
-    color: rgb(135, 206, 250);
-    /* Light blue */
-    transform: scale(1);
-    transition: 0.5s;
-}
-
-.footer_Icons .footer_git a:hover {
-    color: rgb(196, 191, 191);
-    transform: scale(1.2);
-}
-
-.footer_Icons .footer_link a:hover {
-    color: rgb(51, 39, 156);
-    transform: scale(1.2);
-}
-
-.footer_Icons .footer_insta a:hover {
-    color: rgb(198, 72, 202);
-    transform: scale(1.2);
-}
-
-.footer_Icons .footer_wht a:hover {
-    color: green;
-    transform: scale(1.2);
-}
-
-.footer_Icons .footer_twi a:hover {
-    color: lightblue;
-    transform: scale(1.2);
+.footer_content strong {
+    color: var(--text-primary);
 }

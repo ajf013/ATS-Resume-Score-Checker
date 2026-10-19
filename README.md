@@ -44,10 +44,17 @@ The codebase is split into two distinct parts for easy deployment and maintenanc
 ```
 
 ## Features
-- **Progressive Web App (PWA)**: Installable on mobile and desktop via Chrome/Safari.
-- **Glassmorphism UI**: Modern, sleek, dark-themed responsive UI built with Semantic UI and custom CSS.
-- **Robust Parsing**: Uses Azure Document Intelligence to cleanly extract text from any complex PDF or Word resume.
-- **AI Analysis**: Uses Azure OpenAI (`gpt-4.1-mini`) for strict JSON-formatted ATS scoring and suggestions.
+- **Clean Minimalist Modern UI**: Crisp typography (Plus Jakarta Sans & Inter), hairline borders, and fluid Light/Dark theme toggle with automatic preference memory.
+- **Target Job Description Comparison**: Compare resumes against a specific job posting to measure exact role alignment and uncover tailored keyword gaps.
+- **Multi-Dimensional ATS Scorecard**: Circular SVG gauge and 4 distinct sub-scores:
+  - 🎯 **Keywords & Hard Skills Match**
+  - 📐 **Formatting & ATS Parseability**
+  - 📈 **Measurable Impact & Metrics**
+  - 👔 **Role & Seniority Fit**
+- **AI Bullet Point Rewriter**: Scans weak bullet points from the resume and rewrites them into high-impact, metric-driven statements with one-click copy.
+- **⚡ Instant Demo Resume**: One-click test button pre-loaded with a realistic software engineering resume and job description.
+- **Audit Export**: One-click "Copy Summary" to clipboard and "Download Report (.md)" for offline review.
+- **Cloud Infrastructure**: Powered by Azure Functions (Flex Consumption `FC1`), Azure Key Vault, Azure Document Intelligence, and Azure OpenAI (`gpt-4.1-mini`).
 
 ## Deployment
 
@@ -61,8 +68,12 @@ az webapp up --name <your-app-name> --html --resource-group <your-resource-group
 ```
 
 ### Backend (`/backend`)
-The backend is a Python Azure Function. Deploy it using Azure Core Tools:
+The backend is a Python Azure Function running on the **Azure Functions Flex Consumption plan** (`FC1`). Deploy updates using Azure Functions Core Tools:
 ```bash
 cd backend
-func azure functionapp publish <your-function-name>
+func azure functionapp publish ajf-resume-analyzer-flex --python
+```
+Or using Azure CLI zip deployment:
+```bash
+az functionapp deploy --resource-group <your-resource-group> --name ajf-resume-analyzer-flex --src-path <package.zip> --type zip
 ```
