@@ -1,0 +1,11 @@
+{
+  "name": "ats-resume-score-checker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-Powered ATS Resume Score Checker & Career Optimizer",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd frontend && npm start",
+    "test": "cd frontend && npm test"
+  }
+}
