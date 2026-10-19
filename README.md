@@ -110,16 +110,20 @@ flowchart TD
 
 ---
 
-### 2. 📄 Enhanced & Tailored Resume Generator (Missing Requirements Added)
-- **Seamless Skill Integration**: Automatically takes the candidate's authentic career history and naturally weaves in the missing requirements and skills (e.g. *Kubernetes, GraphQL APIs, AWS, Microservices*) into context-appropriate experience bullets and technical skill lists.
-- **Zero Keyword Stuffing**: Ensures newly added skills are embedded into realistic engineering workflows rather than arbitrary comma-separated skill lists.
-- **Humanized Voice**: Purges AI buzzwords and rewrites bullet points using the **Google X-Y-Z formula** (*Accomplished [X] as measured by [Y] by doing [Z]*).
-- **Multi-Format Export**:
-  - 📥 **Download .md**: Clean Markdown resume file ready for developer portfolios.
-  - 📄 **Download .txt**: Pre-formatted plain text ready to paste directly into Microsoft Word or Google Docs.
-  - 📋 **Copy Resume**: Instant one-click clipboard copy.
+### 2. 📄 Auto-Updated Full Resume (All Recommendations Applied)
+- **100% Complete Resume Auto-Update**: Reconstructs the candidate's complete career history from top to bottom — retaining all real company names, employment dates, credentials, and projects with zero omissions or abbreviations.
+- **Seamless Requirement Integration**: Woven-in target job qualifications and missing skills (e.g. *Kubernetes, GraphQL APIs, Docker, CI/CD*) naturally across relevant roles and skills matrices without awkward keyword stuffing.
+- **Metric-Driven Bullet Rewrites**: Automatically upgrades passive responsibility bullets into high-impact metric statements utilizing Google's X-Y-Z formula (*Accomplished [X] as measured by [Y] by doing [Z]*).
+- **Humanized Voice**: Purges AI buzzwords and robotic corporate speak, substituting authentic engineering terminology to ensure human reviewer rapport and AI screener clearance.
+- **One-Click Multi-Format Export Suite**:
+  - 📥 **Download Word (.doc)**: Natively styled Microsoft Word document with clean ATS typography and single-column formatting.
+  - 📄 **Download .md**: Full Markdown source ready for GitHub portfolios or text editors.
+  - 📄 **Download .txt**: Plain text ready for copy-pasting directly into ATS form fields (Workday, Greenhouse, Lever).
+  - 🖨️ **Print / Save as PDF**: Clean browser print dialog with styled printable layout.
+  - 📋 **Copy Resume**: Instant clipboard copy with feedback animation.
+- **Dual View Modes**: Switch between **📑 Formatted Paper Document View** and **📝 Raw Markdown View**.
 
-![Enhanced Resume Preview](./screenshot_enhanced_preview.png)
+![Auto-Updated Resume Preview](./screenshot_enhanced_preview.png)
 
 ---
 

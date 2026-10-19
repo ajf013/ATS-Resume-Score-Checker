@@ -636,6 +636,166 @@ body {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-primary-action {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary-action:hover {
+  background: linear-gradient(135deg, var(--accent-primary-hover) 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+/* ==========================================================================
+   Auto-Updated Complete Resume Callout Banner
+   ========================================================================== */
+
+.updated-resume-callout-banner {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.28);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  margin: 24px 0 16px 0;
+}
+
+.callout-badge-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.callout-pill {
+  background: var(--accent-primary);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.callout-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-success);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.callout-tag-humanized {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.callout-main-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.callout-text {
+  max-width: 640px;
+}
+
+.callout-text h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.callout-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.callout-btn-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.callout-btn-primary {
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.callout-btn-primary:hover {
+  background: var(--accent-primary-hover);
+  transform: translateY(-1px);
+}
+
+.callout-btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.callout-btn-secondary:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+}
+
+.callout-btn-preview {
+  background: transparent;
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.callout-btn-preview:hover {
+  background: var(--accent-primary-subtle);
 }
 
 /* ==========================================================================
@@ -1310,6 +1470,36 @@ body {
   background-color: var(--accent-success);
 }
 
+.view-mode-toggle-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.toggle-mode-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.toggle-mode-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.toggle-mode-btn.active {
+  background: var(--accent-primary-subtle);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  font-weight: 700;
+}
+
 .copy-preview-btn {
   background: transparent;
   border: 1px solid var(--border-color);
@@ -1335,9 +1525,72 @@ body {
   color: var(--text-primary);
   white-space: pre-wrap;
   word-break: break-word;
-  max-height: 550px;
+  max-height: 600px;
   overflow-y: auto;
   background-color: var(--bg-surface);
+}
+
+/* 📑 Professional Paper Resume Document Preview */
+.paper-resume-document {
+  padding: 36px 42px;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  max-height: 650px;
+  overflow-y: auto;
+  line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.paper-resume-document .resume-h1 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+  border-bottom: 2px solid var(--text-primary);
+  padding-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.paper-resume-document .resume-h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 22px 0 8px 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+}
+
+.paper-resume-document .resume-h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 14px 0 4px 0;
+}
+
+.paper-resume-document .resume-p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin: 4px 0 8px 0;
+  line-height: 1.55;
+}
+
+.paper-resume-document .resume-ul {
+  margin: 4px 0 12px 22px;
+  padding: 0;
+}
+
+.paper-resume-document .resume-li {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  line-height: 1.55;
+}
+
+.paper-resume-document strong {
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* ==========================================================================
