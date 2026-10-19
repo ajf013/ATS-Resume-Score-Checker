@@ -96,38 +96,60 @@ flowchart TD
 
 ## ✨ Key Features
 
-### 1. 🎯 Target Job Description Matching
-- Upload both your resume and the exact target job description.
-- Evaluates role-specific terminology, hard skill requirements, and seniority alignment.
-- Computes targeted keyword deficits specifically prioritized by the target company's ATS filter.
+### 1. 🛡️ AI Content & Authenticity Scanner (Anti-Rejection Defense)
+> **Why this matters**: Over 60% of enterprise companies and ATS platforms (Workday, Greenhouse, Taleo) now deploy AI-detection filters and recruiter screening plugins that automatically flag or reject resumes written with ChatGPT or generic AI prompt generators.
+- **AI Likelihood Score (0–100%)**: Quantitative probability that your resume contains machine-generated phrasing, evaluated against models like GPTZero, Copyleaks, and Turnitin heuristics.
+- **Risk Level Verdict**: Color-coded risk assessment:
+  - 🟢 **Low AI Risk (<35%)**: Authentic human practitioner cadence.
+  - 🟡 **Moderate AI Risk (35–65%)**: AI-assisted phrasing detected; minor touchups recommended.
+  - 🔴 **High AI Risk (>65%)**: Classic ChatGPT signature; high probability of automated ATS rejection.
+- **Flagged AI Cliches & Tells**: Quotes exact sentences containing overused AI buzzwords (*"spearheaded"*, *"cutting-edge"*, *"leveraged"*, *"pivotal"*, *"fostered synergy"*), explains why screening filters flag them, and provides **Human Practitioner Alternatives** with a one-click copy button.
+- **Actionable Humanization Rules**: Concrete guidelines to inject authentic project context, engineering constraints, and natural human sentence variety.
 
-### 2. 📊 4-Dimensional ATS Scoring Framework
+![AI Content & Authenticity Scanner](./screenshot_ai_flagged_phrases.png)
+
+---
+
+### 2. 📄 Enhanced & Tailored Resume Generator (Missing Requirements Added)
+- **Seamless Skill Integration**: Automatically takes the candidate's authentic career history and naturally weaves in the missing requirements and skills (e.g. *Kubernetes, GraphQL APIs, AWS, Microservices*) into context-appropriate experience bullets and technical skill lists.
+- **Zero Keyword Stuffing**: Ensures newly added skills are embedded into realistic engineering workflows rather than arbitrary comma-separated skill lists.
+- **Humanized Voice**: Purges AI buzzwords and rewrites bullet points using the **Google X-Y-Z formula** (*Accomplished [X] as measured by [Y] by doing [Z]*).
+- **Multi-Format Export**:
+  - 📥 **Download .md**: Clean Markdown resume file ready for developer portfolios.
+  - 📄 **Download .txt**: Pre-formatted plain text ready to paste directly into Microsoft Word or Google Docs.
+  - 📋 **Copy Resume**: Instant one-click clipboard copy.
+
+![Enhanced Resume Preview](./screenshot_enhanced_preview.png)
+
+---
+
+### 3. 🎯 Target Job Description Matching
+- Upload your resume alongside a specific job posting.
+- Evaluates role-specific terminology, hard skill requirements, and seniority alignment.
+- Computes targeted keyword deficits specifically prioritized by the employer's ATS filter.
+
+### 4. 📊 4-Dimensional ATS Scoring Framework
 Instead of an arbitrary single number, the system breaks your score into 4 actionable evaluation pillars (0–100):
 - **Keywords & Hard Skills Match**: Presence and density of essential technologies, frameworks, and domain tooling.
 - **Formatting & ATS Parseability**: Section hierarchy, standard headers, date formats, and layout readability for automated parsers.
 - **Measurable Impact & Metrics**: Presence of quantifiable results (percentages, revenue, performance gains, team scale) vs. generic responsibility statements.
 - **Role & Seniority Fit**: Years of experience, leadership scope, architectural ownership, and depth of technical problem-solving.
 
-### 3. ✨ AI Bullet Point Rewriter
+### 5. ✨ AI Bullet Point Rewriter
 - Identifies weak, passive, or responsibility-focused bullets in your resume.
-- Rewrites each bullet using the **Google X-Y-Z formula** (*Accomplished [X] as measured by [Y] by doing [Z]*).
-- Provides a one-click **"Copy"** button for instant pasting into your resume document.
+- Rewrites each bullet into an active, metric-driven statement with a one-click copy button.
 
-### 4. 🏷️ Skills Gap Matrix
+### 6. 🏷️ Skills Gap Matrix
 - **Skills Found**: Visual green badges listing verified competencies extracted from the resume.
 - **Missing / Recommended Keywords**: Visual amber badges showing high-value keywords missing from the resume based on industry norms or the target job description.
 
-### 5. ⚡ One-Click Instant Demo Mode
+### 7. ⚡ One-Click Instant Demo Mode
 - Test the application instantly without needing an external PDF or DOCX file.
 - Pre-loads an authentic Senior Full Stack Engineer resume and a complete job posting.
 
-### 6. 🌓 Fluid Light / Dark Mode
+### 8. 🌓 Fluid Light / Dark Mode
 - Clean Minimalist dark theme by default with a high-contrast light mode.
 - User preference is automatically saved to `localStorage` and respected across sessions.
-
-### 7. 📥 Export Options
-- **Copy Report**: Copies a formatted executive assessment and score summary directly to your clipboard.
-- **Download .md**: Exports the full structured report as a Markdown file for offline review and tracking.
 
 ---
 
@@ -135,7 +157,7 @@ Instead of an arbitrary single number, the system breaks your score into 4 actio
 
 ```text
 ATS-Resume-Score-Checker/
-├── backend/                              # Azure Functions Serverless Backend
+├── backend/                              # Azure Functions Serverless Backend (Flex Consumption: FC1)
 │   ├── .venv/                            # Local Python virtual environment (ignored in git)
 │   ├── function_app.py                   # Main HTTP Trigger (/api/analyze_resume)
 │   ├── requirements.txt                  # Python dependencies (azure-ai-formrecognizer, openai, etc.)
@@ -155,7 +177,9 @@ ATS-Resume-Score-Checker/
 │   ├── package.json                      # Node.js dependencies and scripts
 │   └── build/                            # Production distribution bundle (generated)
 │
-├── screenshot.png                        # High-resolution dashboard screenshot
+├── screenshot.png                        # Main dashboard preview
+├── screenshot_ai_flagged_phrases.png     # AI Content Scanner preview
+├── screenshot_enhanced_preview.png       # Tailored Resume preview
 ├── LICENSE                               # MIT License
 └── README.md                             # Comprehensive project documentation
 ```
@@ -185,25 +209,50 @@ Content-Type: application/json
 #### Response Body Schema (HTTP 200 OK)
 ```json
 {
-  "ats_score": 85,
+  "ats_score": 82,
   "summary": "Executive summary highlighting candidate strengths and key ATS gaps...",
   "score_breakdown": {
     "keywords": {
       "score": 85,
+      "label": "Keywords & Hard Skills",
       "feedback": "Strong coverage of core backend technologies, but missing Kubernetes and GraphQL."
     },
     "formatting": {
       "score": 90,
+      "label": "Formatting & Structure",
       "feedback": "Clean chronological layout with standard headers; highly parseable by modern ATS systems."
     },
     "impact_metrics": {
-      "score": 75,
+      "score": 65,
+      "label": "Measurable Impact & Metrics",
       "feedback": "Several metrics present, but middle section relies on passive responsibility descriptions."
     },
     "experience_fit": {
-      "score": 88,
+      "score": 80,
+      "label": "Role & Seniority Fit",
       "feedback": "Demonstrates clear senior-level trajectory and cloud architecture ownership."
     }
+  },
+  "ai_detection": {
+    "ai_likelihood_score": 70,
+    "risk_level": "High",
+    "verdict": "Resume demonstrates a polished, formulaic style with several buzzwords often generated by AI writing tools.",
+    "flagged_ai_phrases": [
+      {
+        "phrase": "spearheaded bi-weekly architectural design reviews",
+        "reason": "The word 'spearheaded' is a common AI-generated buzzword and can sound inflated or unnatural.",
+        "humanized_replacement": "Led bi-weekly architectural design reviews"
+      },
+      {
+        "phrase": "leveraging cutting-edge cloud paradigms to architect robust web applications",
+        "reason": "Overused ChatGPT phrasing and hollow intensifiers that trigger automated AI detection filters",
+        "humanized_replacement": "building and maintaining high-traffic web applications on Azure"
+      }
+    ],
+    "humanization_tips": [
+      "Replace overused buzzwords ('spearheaded', 'cutting-edge') with straightforward verbs.",
+      "Introduce varied sentence structures and specific engineering metrics to sound authentic."
+    ]
   },
   "skills": [
     "Python",
@@ -215,20 +264,21 @@ Content-Type: application/json
   "missing_skills": [
     "Kubernetes",
     "GraphQL",
-    "CI/CD Pipelines",
+    "AWS",
     "Microservices"
   ],
   "suggestions": [
     "Incorporate explicit metrics into bullet points (e.g., 'reduced API latency by 35%').",
-    "Add a dedicated Cloud & DevOps section to highlight container orchestration expertise.",
-    "Tailor the opening summary to directly reference the job title."
+    "Add a dedicated Cloud & DevOps section to highlight container orchestration expertise."
   ],
   "bullet_rewrites": [
     {
       "original": "Responsible for managing the team's Azure deployment and monitoring.",
-      "rewritten": "Spearheaded cloud migration to Azure Functions Flex Consumption, cutting infrastructure overhead by 40% while achieving 99.95% uptime."
+      "improved": "Spearheaded cloud migration to Azure Functions Flex Consumption, cutting infrastructure overhead by 40% while achieving 99.95% uptime.",
+      "reason": "Uses active verb and quantifiable metric."
     }
-  ]
+  ],
+  "enhanced_resume_markdown": "# Alex Morgan\nSenior Full Stack Engineer | alex.morgan@email.com\n\n## Summary\n...\n\n## Technical Skills\n- Cloud & DevOps: Azure, Docker, Kubernetes (basic experience), CI/CD\n...\n\n## Professional Experience\n..."
 }
 ```
 

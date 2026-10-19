@@ -118,13 +118,30 @@ def analyze_resume(req: func.HttpRequest) -> func.HttpResponse:
         )
 
         prompt = f"""
-You are an elite ATS (Applicant Tracking System) evaluator and technical recruiter.
+You are an elite ATS (Applicant Tracking System) evaluator, technical recruiter, and AI-content detection specialist.
 Analyze this resume in detail{', specifically comparing it against the Target Job Description below' if job_desc else ''}.
 
 {job_desc_section}
 
 Resume Text:
 {extracted_text}
+
+CRITICAL AUDIT REQUIREMENTS:
+1. ATS Evaluation: Compute realistic ats_score (0-100), executive summary, 4-pillar score_breakdown (keywords, formatting, impact_metrics, experience_fit), skills, missing_skills, prioritized suggestions, and bullet_rewrites (with reason and improved metrics).
+2. AI-Generated Content & Detection Audit:
+   - Many companies and recruiter ATS filters now screen and reject resumes written with AI tools (ChatGPT, etc.) because they sound robotic, inflated, and formulaic.
+   - Scan the resume for AI hallmarks: overused AI buzzwords ('spearheaded', 'leveraged', 'pivotal', 'fostered synergy', 'testament to', 'cutting-edge', 'robust', 'seamless', 'delved'), uniform sentence cadence, significance inflation, and lack of authentic engineer voice.
+   - Provide 'ai_detection' with:
+     - 'ai_likelihood_score' (int 0-100: percentage likelihood of AI involvement)
+     - 'risk_level' ('Low' if <30, 'Moderate' if 30-65, 'High' if >65)
+     - 'verdict' (2-sentence recruiter assessment of AI vs authentic human practitioner phrasing)
+     - 'flagged_ai_phrases' (list of 2-4 specific phrases from the resume that trigger AI screeners, why they trigger, and humanized practitioner replacements)
+     - 'humanization_tips' (2-3 concrete tips to make the resume sound authentically written by an engineer)
+3. Enhanced & Tailored Resume:
+   - Generate a complete, polished, ATS-optimized version of the resume in 'enhanced_resume_markdown'.
+   - Seamlessly integrate the missing skills/requirements into the candidate's actual job bullets and skills sections naturally, without awkward keyword stuffing.
+   - Strip out AI buzzwords and rewrite bullets with authentic engineering specifics and quantifiable impacts (Google X-Y-Z formula).
+   - Format cleanly in Markdown with standard headers (# Name, Contact, ## Summary, ## Technical Skills, ## Professional Experience, ## Education).
 
 Return a valid JSON object matching this schema EXACTLY:
 {{
@@ -152,6 +169,22 @@ Return a valid JSON object matching this schema EXACTLY:
       "feedback": "Feedback on years of experience, leadership, and domain match."
     }}
   }},
+  "ai_detection": {{
+    "ai_likelihood_score": 70,
+    "risk_level": "High",
+    "verdict": "2-sentence recruiter assessment of AI vs authentic human phrasing.",
+    "flagged_ai_phrases": [
+      {{
+        "phrase": "Exact quoted phrase or sentence from resume",
+        "reason": "Why automated AI filters or recruiters flag this",
+        "humanized_replacement": "Direct, authentic human practitioner phrasing"
+      }}
+    ],
+    "humanization_tips": [
+      "Concrete rule 1 to humanize the resume and pass AI detectors",
+      "Concrete rule 2"
+    ]
+  }},
   "skills": ["Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5"],
   "missing_skills": ["Missing Skill 1", "Missing Skill 2", "Missing Skill 3", "Missing Skill 4"],
   "suggestions": [
@@ -164,13 +197,9 @@ Return a valid JSON object matching this schema EXACTLY:
       "original": "Weak bullet point from the resume lacking quantifiable results",
       "improved": "Optimized bullet point with active power verb, specific context, and measurable metrics",
       "reason": "Why this rewrite scores higher with ATS algorithms"
-    }},
-    {{
-      "original": "Second weak bullet point from the resume",
-      "improved": "Optimized bullet point with metrics and action verbs",
-      "reason": "Why this rewrite scores higher with ATS algorithms"
     }}
-  ]
+  ],
+  "enhanced_resume_markdown": "# Candidate Name\\nRole | Email | Phone\\n\\n## Summary\\n...\\n\\n## Technical Skills\\n...\\n\\n## Professional Experience\\n...\\n\\n## Education\\n..."
 }}
 """
 
@@ -178,7 +207,7 @@ Return a valid JSON object matching this schema EXACTLY:
             model="gpt-4.1-mini",
             response_format={ "type": "json_object" },
             messages=[
-                {"role": "system", "content": "You are an ATS evaluator. You always return strict JSON."},
+                {"role": "system", "content": "You are an ATS evaluator, recruiter, and AI detection specialist. You always return strict JSON."},
                 {"role": "user", "content": prompt}
             ]
         )
@@ -196,6 +225,16 @@ Return a valid JSON object matching this schema EXACTLY:
                 parsed["missing_skills"] = []
             if "suggestions" not in parsed:
                 parsed["suggestions"] = []
+            if "ai_detection" not in parsed:
+                parsed["ai_detection"] = {
+                    "ai_likelihood_score": 25,
+                    "risk_level": "Low",
+                    "verdict": "Authentic human phrasing detected with natural practitioner cadence.",
+                    "flagged_ai_phrases": [],
+                    "humanization_tips": ["Keep bullet points grounded with concrete project metrics."]
+                }
+            if "enhanced_resume_markdown" not in parsed:
+                parsed["enhanced_resume_markdown"] = ""
             content = json.dumps(parsed)
         except Exception:
             pass
