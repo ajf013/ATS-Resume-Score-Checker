@@ -208,7 +208,7 @@ Return a valid JSON object matching this schema EXACTLY:
 """
 
         response = ai_client.chat.completions.create(
-            model="gpt-4.1-mini",
+            model=os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-5-mini"),
             response_format={ "type": "json_object" },
             max_tokens=4096,
             messages=[

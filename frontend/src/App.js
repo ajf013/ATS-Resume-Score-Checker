@@ -454,7 +454,7 @@ ${(result.suggestions || []).map((s, i) => `${i + 1}. ${s}`).join("\n")}
           <div>
             <h1 className="brand-name">ATS Resume Analyzer</h1>
           </div>
-          <span className="brand-badge">GPT-4.1 Mini • Flex</span>
+          <span className="brand-badge">GPT-5 Mini • Flex</span>
         </div>
 
         <div className="navbar-actions">
